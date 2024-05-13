@@ -110,14 +110,17 @@ class AmazonAPI:
         print(f"Our url: {self.driver.current_url}")
         time.sleep(2)  # wait to load page
 
-        result_list = self.driver.find_elements(By.CLASS_NAME, 's-result-list')
+        # result_list = self.driver.find_elements(By.CLASS_NAME, 's-result-list')
+        result_list = self.driver.find_elements(By.ID, 'search')
         # print(result_list[0].get_attribute("outerHTML"))
         links = []
         try:
             results = result_list[0].find_elements(
-                By.CSS_SELECTOR, 
-                # '/div/div/div/span/div/div[1]/span/a'
-                'a.a-link-normal.s-faceout-link.a-text-normal'
+                By.CLASS_NAME, 
+                # '//*[@id="search"]/span[2]/div/div/div/div/span/div/div[1]/span/a'
+                # "a-link-normal.s-faceout-link.a-text-normal"
+                # '//div/div/div/span/div/div[1]/span/a'
+                'a-link-normal'
                 # 'a-declarative'
                 # '//div/div[2]/div/div/span/div/div[1]/div/div/span/a'
                 # '//div/div/div/span/div/div[1]'
